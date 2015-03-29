@@ -64,12 +64,34 @@ describe('Gitter-Bot', function() {
   });
 
   describe('validation test 1', function () {
-    it('check message: calc 1+1a', function (done) {
+    it('check message: calc 1+1easy+(1+1)', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
         var test = true;
 
         room.send('calc 1+1a');
+        events.on('message', function (message) {
+          var isCurUser = message.fromUser.username == me;
+          if(isCurUser) return;
+          test = false;
+        });
+
+        setTimeout(function(){
+          assert.equal(test, true);
+          done();
+        },4000)
+      });
+      this.timeout(15000);
+    });
+  });
+
+  describe('validation test 2', function () {
+    it('check message: calc 1+12(1*2)+(1+1)', function (done) {
+      gitter.rooms.join(url).then(function(room){
+        var events = room.listen();
+        var test = true;
+
+        room.send('calc 1+12(1*2)+(1+1)');
         events.on('message', function (message) {
           var isCurUser = message.fromUser.username == me;
           if(isCurUser) return;
