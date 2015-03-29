@@ -1,4 +1,4 @@
-var url = 'a-gambit/test';
+var url = 'A-gambit/UAWC-GITTER-BOT';
 var index = require('./../bot/index.js')(url);
 
 var token = "b837e4508d1b32c66773de8df27ba7828a97e675";
@@ -80,23 +80,6 @@ describe('Gitter-Bot', function() {
           var isCurUser = message.fromUser.username == me;
           if(isCurUser) return;
           assert.equal('2*(10+5+(3-1))=34', message.text);
-          done();
-        });
-      });
-      this.timeout(15000);
-    });
-  });
-
-  describe('calc test 4', function () {
-    it('check message: calc (34/2/2/223.1+(121 - 2)/3+12.77777777)', function (done) {
-      var res = '(34/2/2/223.1+(121-2)/3+12.77777777)=' + (34/2/2/223.1+(121-2)/3+12.77777777);
-      gitter.rooms.join(url).then(function(room){
-        var events = room.listen();
-        room.send('calc (34/2/2/223.1+(121 - 2)/3+12.77777777)');
-        events.on('message', function (message) {
-          var isCurUser = message.fromUser.username == me;
-          if(isCurUser) return;
-          assert.equal(res, message.text);
           done();
         });
       });
