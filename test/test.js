@@ -14,8 +14,7 @@ gitter.currentUser().then(function(user) {
 });
 
 describe('Gitter-Bot', function() {
-
-  describe('easy test', function () {
+  describe('calc test 1', function () {
     it('check message: calc 1+1', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
@@ -31,7 +30,7 @@ describe('Gitter-Bot', function() {
     });
   });
 
-  describe('normal test', function () {
+  describe('calc test 2', function () {
     it('check message: calc 2*(10+5+(3-1))', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
@@ -47,7 +46,7 @@ describe('Gitter-Bot', function() {
     });
   });
 
-  describe('hard test', function () {
+  describe('calc test 3', function () {
     it('check message: calc (34/2/2/223.1+(121 - 2)/3+12.77777777)', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
@@ -64,6 +63,28 @@ describe('Gitter-Bot', function() {
   });
 
   describe('validation test 1', function () {
+    it('check message: hi bot', function (done) {
+      gitter.rooms.join(url).then(function(room){
+        var events = room.listen();
+        var test = true;
+
+        room.send('hi bot');
+        events.on('message', function (message) {
+          var isCurUser = message.fromUser.username == me;
+          if(isCurUser) return;
+          test = false;
+        });
+
+        setTimeout(function(){
+          assert.equal(test, true);
+          done();
+        },4000)
+      });
+      this.timeout(15000);
+    });
+  });
+
+  describe('validation test 2', function () {
     it('check message: calc 1+1easy+(1+1)', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
@@ -85,7 +106,7 @@ describe('Gitter-Bot', function() {
     });
   });
 
-  describe('validation test 2', function () {
+  describe('validation test 3', function () {
     it('check message: calc 1+12(1*2)+(1+1)', function (done) {
       gitter.rooms.join(url).then(function(room){
         var events = room.listen();
