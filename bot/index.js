@@ -12,11 +12,10 @@ var getEval = function(msg){
   return isCalc && isValid ? val : ""
 };
 
-module.exports = bot = function(url, log){
+module.exports = GitterBot = function(url){
   gitter.rooms.join(url)
   .then(function(room) {
     var events = room.listen();
-    if(log) console.log('Start listen:', 'https://gitter.im/'+url);
 
     events.on('message', function(message) {
       var msg = message.text.replace(/ /g, "")
@@ -24,10 +23,9 @@ module.exports = bot = function(url, log){
         , res = req + "=" + eval(req);
 
       if(!req.length) return;
-      if(log) console.log('Send Calc:', res);
       room.send(res);
     });
   });
 };
 
-bot(url, true);
+GitterBot(url);

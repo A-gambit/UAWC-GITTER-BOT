@@ -11,11 +11,17 @@ Gitter Calc Bot
 Test using Mocha
 
 ```bash
-npm test
+$ npm test
 ```
 
 or
 
 ```bash
-mocha test/test.js
+$ mocha test/test.js
+```
+
+### Run Script
+
+```bash
+$ node bot/index.js <name of room>
 ```

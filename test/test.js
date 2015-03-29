@@ -1,5 +1,5 @@
 var url = 'a-gambit/test';
-var index = require('./../index.js')(url, false);
+var index = require('./../bot/index.js')(url);
 
 var token = "b837e4508d1b32c66773de8df27ba7828a97e675";
 
@@ -70,9 +70,10 @@ describe('Gitter-Bot', function() {
 
         room.send('hi bot');
         events.on('message', function (message) {
-          var isCurUser = message.fromUser.username == me;
+          var isCurUser = message.fromUser.username == me
+            , isRes = /^[hi bot]/.test(message.text);
           if(isCurUser) return;
-          test = false;
+          if(isRes) test = false;
         });
 
         setTimeout(function(){
@@ -92,9 +93,10 @@ describe('Gitter-Bot', function() {
 
         room.send('calc 1+1a');
         events.on('message', function (message) {
-          var isCurUser = message.fromUser.username == me;
+          var isCurUser = message.fromUser.username == me
+            , isRes = /^[1+1a]/.test(message.text);
           if(isCurUser) return;
-          test = false;
+          if(isRes) test = false;
         });
 
         setTimeout(function(){
@@ -114,9 +116,10 @@ describe('Gitter-Bot', function() {
 
         room.send('calc 1+12(1*2)+(1+1)');
         events.on('message', function (message) {
-          var isCurUser = message.fromUser.username == me;
+          var isCurUser = message.fromUser.username == me
+            , isRes = /^[1+12(1*2)+(1+1)]/.test(message.text);
           if(isCurUser) return;
-          test = false;
+          if(isRes) test = false;
         });
 
         setTimeout(function(){
