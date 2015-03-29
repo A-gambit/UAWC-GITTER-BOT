@@ -62,6 +62,28 @@ describe('Gitter-Bot', function() {
       this.timeout(15000);
     });
   });
+
+  describe('validation test 1', function () {
+    it('check message: calc 1+1a', function (done) {
+      gitter.rooms.join(url).then(function(room){
+        var events = room.listen();
+        var test = true;
+
+        room.send('calc 1+1a');
+        events.on('message', function (message) {
+          var isCurUser = message.fromUser.username == me;
+          if(isCurUser) return;
+          test = false;
+        });
+
+        setTimeout(function(){
+          assert.equal(test, true);
+          done();
+        },4000)
+      });
+      this.timeout(15000);
+    });
+  });
 });
 
 

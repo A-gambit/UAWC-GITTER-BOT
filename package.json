@@ -1,10 +1,10 @@
 {
-  "name": "uaweb-js-2015",
+  "name": "UAWC-GITTER-BOT",
   "version": "1.0.0",
-  "description": "UaWeb 2015 Task: Gitter Calc-Bot",
+  "description": "UaWeb 2015 Task: Gitter Calc Bot",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js --timeout 4000"
+    "test": "mocha test/test.js"
   },
   "author": "A-gambit",
   "license": "ISC",
@@ -13,5 +13,16 @@
   },
   "devDependencies": {
     "mocha": "^2.2.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A-gambit/UAWC-GITTER-BOT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/A-gambit/UAWC-GITTER-BOT/issues"
+  },
+  "homepage": "https://github.com/A-gambit/UAWC-GITTER-BOT"
 }
