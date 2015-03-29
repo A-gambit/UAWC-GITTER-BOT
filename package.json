@@ -1,0 +1,17 @@
+{
+  "name": "uaweb-js-2015",
+  "version": "1.0.0",
+  "description": "UaWeb 2015 Task: Gitter Calc-Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js --timeout 4000"
+  },
+  "author": "A-gambit",
+  "license": "ISC",
+  "dependencies": {
+    "node-gitter": "^1.2.8"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.1"
+  }
+}

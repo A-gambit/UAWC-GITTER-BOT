@@ -1,0 +1,6 @@
+node_modules
+.idea
+*.sublime-workspace
+test-results.xml
+bower_components
+npm-debug.log
